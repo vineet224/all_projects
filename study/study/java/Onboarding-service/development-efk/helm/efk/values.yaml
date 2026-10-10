@@ -1,0 +1,77 @@
+elasticsearch:
+  # Dev-friendly: single node, no persistence by default
+  master:
+    masterOnly: false
+    replicaCount: 1
+    resourcesPreset: "nano"
+    persistence:
+      enabled: false
+  data:
+    replicaCount: 0
+  coordinating:
+    replicaCount: 0
+  ingest:
+    replicaCount: 0
+
+  # Minimal auth for dev (do NOT use like this in prod).
+  security:
+    enabled: false
+
+  service:
+    type: ClusterIP
+
+kibana:
+  replicaCount: 1
+  resourcesPreset: "nano"
+  service:
+    type: ClusterIP
+
+fluentBit:
+  # Fluent Bit as DaemonSet collecting container logs.
+  kind: DaemonSet
+
+  serviceAccount:
+    create: true
+
+  # Basic parsers/inputs/filters/outputs.
+  # This is intentionally simple for interview/dev usage.
+  config:
+    service: |
+      [SERVICE]
+          Flush        1
+          Daemon       Off
+          Log_Level    info
+          Parsers_File parsers.conf
+
+    inputs: |
+      [INPUT]
+          Name              tail
+          Tag               kube.*
+          Path              /var/log/containers/*.log
+          Parser            docker
+          Mem_Buf_Limit     20MB
+          Skip_Long_Lines   On
+
+    filters: |
+      [FILTER]
+          Name                kubernetes
+          Match               kube.*
+          Kube_URL            https://kubernetes.default.svc:443
+          Kube_CA_File        /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+          Kube_Token_File     /var/run/secrets/kubernetes.io/serviceaccount/token
+          Merge_Log           On
+          Keep_Log            Off
+          K8S-Logging.Parser  On
+          K8S-Logging.Exclude On
+
+    outputs: |
+      [OUTPUT]
+          Name            es
+          Match           kube.*
+          Host            efk-elasticsearch
+          Port            9200
+          Logstash_Format On
+          Logstash_Prefix kubernetes
+          Replace_Dots    On
+          Retry_Limit     False
+
