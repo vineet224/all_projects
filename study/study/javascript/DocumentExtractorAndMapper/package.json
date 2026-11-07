@@ -1,0 +1,26 @@
+{
+  "name": "document-extractor-and-mapper",
+  "version": "1.0.0",
+  "description": "Enterprise Neuro-Symbolic Document Extraction and Semantic Mapping Engine for Trade Finance Letters of Credit",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node demo/runPipelineDemo.js",
+    "demo": "node demo/runPipelineDemo.js",
+    "test": "node test/pipeline.test.js"
+  },
+  "keywords": [
+    "llm",
+    "document-extraction",
+    "semantic-mapping",
+    "vector-db",
+    "trade-finance",
+    "letter-of-credit",
+    "n8n"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pdf-lib": "^1.17.1"
+  }
+}

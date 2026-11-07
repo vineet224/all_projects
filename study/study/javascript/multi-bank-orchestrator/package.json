@@ -1,0 +1,19 @@
+{
+  "name": "multi-bank-system",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "auth-service",
+    "orchestrator-service"
+  ],
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "dev:auth": "npm --workspace=auth-service run dev",
+    "dev:orchestrator": "npm --workspace=orchestrator-service run dev",
+    "start:auth": "npm --workspace=auth-service start",
+    "start:orchestrator": "npm --workspace=orchestrator-service start",
+    "test": "node scripts/test-e2e.js"
+  }
+}
+

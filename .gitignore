@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+*.env
+**/.env
+**/.env.*
+!**/.env.example
+
+# Service accounts and credentials
+service-account.json
+*service*account*.json
+**/*service*account*.json
+!**/*service*account*.example*
+!**/*.example
+
+# Database files
+*.db
+*.db-wal
+*.db-shm
+**/*.db
+**/*.db-wal
+**/*.db-shm
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+**/*.log
+
+# Testing & Coverage
+coverage/
+temp_samples/
+temp_test_artifacts/
+
+# OS and IDE files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+
+# Backups
+*.subrepo_git_backups*

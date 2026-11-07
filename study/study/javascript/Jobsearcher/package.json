@@ -1,0 +1,26 @@
+{
+  "name": "backend-job-search-automation",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Discover backend jobs from public ATS boards, score with Gemini, track in Google Sheets.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "preview": "node index.js --preview",
+    "search": "node index.js",
+    "discover": "node crawler.js",
+    "stats": "node index.js --stats",
+    "top": "node index.js --top",
+    "test": "node index.js --self-test"
+  },
+  "dependencies": {
+    "@google/genai": "^1.0.0",
+    "dotenv": "^16.4.5",
+    "express": "^5.3.0",
+    "googleapis": "^150.0.0"
+  }
+}
