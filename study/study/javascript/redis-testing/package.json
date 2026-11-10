@@ -1,0 +1,55 @@
+{
+  "name": "redis-operations-lab",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Comprehensive Redis operations lab for backend SDE-2 system-design interviews",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:strings": "vitest run src/modules/strings/strings.test.ts",
+    "test:hashes": "vitest run src/modules/hashes/hashes.test.ts",
+    "test:sets": "vitest run src/modules/sets/sets.test.ts",
+    "test:sorted-sets": "vitest run src/modules/sorted-sets/sorted-sets.test.ts",
+    "test:lists": "vitest run src/modules/lists/lists.test.ts",
+    "exp:strings:encodings": "tsx src/modules/strings/experiments/01-encodings.ts",
+    "exp:strings:locks": "tsx src/modules/strings/experiments/02-atomic-locks.ts",
+    "exp:strings:bitmaps": "tsx src/modules/strings/experiments/03-bitmaps-analytics.ts",
+    "exp:hashes:encodings": "tsx src/modules/hashes/experiments/01-hash-encodings.ts",
+    "exp:hashes:json-vs-hash": "tsx src/modules/hashes/experiments/02-json-vs-hash.ts",
+    "exp:hashes:field-expiry": "tsx src/modules/hashes/experiments/03-field-expiration.ts",
+    "exp:sets:social-graph": "tsx src/modules/sets/experiments/01-social-graph.ts",
+    "exp:sorted-sets:leaderboard": "tsx src/modules/sorted-sets/experiments/01-leaderboard.ts",
+    "exp:sorted-sets:rate-limiter": "tsx src/modules/sorted-sets/experiments/02-sliding-window-rate-limiter.ts",
+    "exp:lists:feed": "tsx src/modules/lists/experiments/01-chronological-feed.ts",
+    "exp:lists:queue": "tsx src/modules/lists/experiments/02-reliable-queue.ts",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f"
+  },
+  "keywords": [
+    "redis",
+    "system-design",
+    "data-structures",
+    "strings",
+    "hashes",
+    "sets",
+    "sorted-sets",
+    "lists",
+    "vitest",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "redis": "^4.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.6"
+  }
+}
